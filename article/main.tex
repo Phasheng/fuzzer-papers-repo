@@ -34,7 +34,7 @@
 %\firstfootname{ \quad \quad }
 \headevenname{\mbox{\quad} \hfill  \mbox{\zihao{-5}{\songti  计\quad \quad 算\quad \quad 机\quad \quad 学\quad \quad 报 } \hspace {50mm} \mbox{\songti 2024 年 }}}%
 \headoddname{\songti
-彭渤生, 邢骏洋,王~~京,肖家生：模糊测试技术中测试生成技术综述}%
+彭渤生, 邢骏洋,王~~京,肖家升：模糊测试技术中测试生成技术综述}%
 
 %footnote use of *
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
@@ -84,12 +84,12 @@
 \centering
 \vspace{11mm}
 \heiti  
-{\zihao{2} 基于变异的测试用例生成技术综述 }
+{\zihao{2} 模糊测试技术中测试用例生成技术综述 }
 
 \vskip 5mm
 
 {\zihao{3} \fangsong 
-彭渤生$^{1)}$\quad  邢骏洋$^{1)}$ \quad 王~~京$^{1)}$ \quad 肖家生$^{1)}$
+彭渤生$^{1)}$\quad  邢骏洋$^{1)}$ \quad 王~~京$^{1)}$ \quad 肖家升$^{1)}$
  }
 
 \vspace{5mm}
@@ -101,16 +101,14 @@ $^{1)}$(南京大学软件学院, 南京, 210093)}
 \begin{tabular}{p{160mm}}
 \zihao{5-}{
 \setlength{\baselineskip}{16pt}\selectfont{
-% TODO: 中文摘要内容
 \noindent\heiti 摘\quad 要\quad   \songti  
-*中文摘要内容置于此处(英文摘要中要有这些内容)，字体为小5号宋体。摘要贡献部分，要有数据支持，不要出现``...大大提高''、``...显著改善''等描述，正确的描述是``比{\ldots}提高X{\%}''、
-``在{\ldots}上改善X{\%}''。*摘要
+
+本文综述了模糊测试领域中测试用例生成的研究现状和技术发展。重点分析了基于变异和语法规则的测试用例生成方法，系统梳理了其技术架构演进和最新研究进展。通过对现有技术的评估和总结，文章指出深度学习模型在知识迁移和多模态理解方面的优势将推动模糊测试向更高度智能化和自动化的方向发展，为未来测试用例生成技术的发展提供了新的思路。
 
  \par}}\\[2mm]
 
-% TODO: 中文关键字
 \zihao{5-}{\noindent
-\heiti 关键词  \quad \songti  {*关键词（中文关键字与英文关键字对应且一致，应有5-7个关键词)；关键词；关键词；关键词*  }
+\heiti 关键词  \quad \songti  {模糊测试；自动化测试；生成式模糊测试；变异式模糊测试；深度学习  }
  
 }\\[2mm]
 \zihao{5-}{\heiti 中图法分类号 	\songti  
@@ -122,7 +120,7 @@ TP \rm{\quad \quad \quad     }
 \vskip 7mm
 
 \begin{center}
-\zihao{3}{ {\heiti A Survey for Test Generation Techniques Based on Mutation Technology
+\zihao{3}{ {\heiti A Survey for Test Generation Techniques in Fuzzing Testing
 }}\\
 \vspace {5mm}
 \zihao{5}{ {\heiti PENG Bo-Sheng$^{1)}$ XING Jun-Yang$^{1)}$ WANG Jing$^{1)}$ XIAO Jia-Sheng$^{1)}$
@@ -135,26 +133,24 @@ TP \rm{\quad \quad \quad     }
 \begin{tabular}{p{160mm}}
 \zihao{5}{
 \setlength{\baselineskip}{18pt}\selectfont{
-{\bf Abstract}\quad \begin{heiti} (\textbf{500英文单词，内容包含中文摘要的内容}).
-字体为Times new Roman,字号5号* Abstract \end{heiti}
+{\bf Abstract}\quad \begin{heiti}
+  This paper surveys the current research status and technical developments in test case generation for fuzzing. It focuses on analyzing mutation-based and grammar-based test case generation methods, systematically reviewing their technical architecture evolution and latest research advances. Through evaluation and synthesis of existing technologies, the paper suggests that deep learning models' advantages in knowledge transfer and multimodal understanding will drive fuzzing towards greater intelligence and automation, providing new insights for the future development of test case generation techniques.
+\end{heiti}
 \par}}\\
 
 \setlength{\baselineskip}{18pt}\selectfont{
-% TODO: 英文摘要内容
-\zihao{5}{\noindent Do not modify the amount of space before and after the artworks. One- or two-column format artworks are preferred. and Tables, create a new break line and paste the resized artworks where desired. Do not modify the amount of space before and after the artworks. One- or two-column format artworks are preferred. All Schemes, Equations, Figures, and Tables should be mentioned in the text consecutively and numbered with Arabic numerals, and appear below where they are mentioned for the first time in the main text. To insert Schemes, Equations, Figures, and Tables, create a new break line and paste the resized artworks where desired. Do not modify the amount of space before and after the artworks. One- or two-column format artworks are preferred.Do not modify the amount of space before and after the artworks. One- or two-column format artworks are preferred. and Tables, create a new break line and paste the resized artworks where desired. Do not modify the amount of space before and after the artworks. One- or two-column format artworks are preferred. All Schemes, Equations, Figures, and Tables should be mentioned in the text consecutively and numbered with Arabic numerals, and appear below where they are mentioned for the first time in the main text.
+\zihao{5}{\noindent 
 
 \vspace {5mm}
-% TODO: 英文关键字
-{\bf Keywords}\quad \heiti 中文关键字与英文关键字对应且一致，\textbf{不要用英文缩写});
-key word; key word; key word* *字体为5号Times new Roman * Key words }\par}
+{\bf Keywords}\quad \heiti
+Fuzzing; Automated Testing; Generation-based Fuzzing; Mutation-based Fuzzing; Deep Learning}\par}
 \end{tabular}
 
 \setlength{\tabcolsep}{2pt}
 \begin{tabular}{p{0.05cm}p{16.15cm}}
 \multicolumn{2}{l}{\rule[4mm]{40mm}{0.1mm}}\\[-3mm]
 &\begin{songti}
-% TODO: 作者信息
-彭渤生，性别男，xxxx年生，学位(或目前学历)，职称，是/否计算机学会(CCF)会员（提供会员号）,主要研究领域为*****、****.E-mail: **************.邢骏洋，性别男，2004年生，本科生，职称，主要研究领域为图形化界面软件测试.E-mail: xingjunyang@smail.nju.edu.cn. 王京（通信作者），性别男，xxxx年生，学位(或目前学历)，职称，是/否计算机学会(CCF)会员（提供会员号）,主要研究领域为*****、****.E-mail: **************.肖家生男，性别，xxxx年生，学位(或目前学历)，职称，是/否计算机学会(CCF)会员（提供会员号）,主要研究领域为*****、****.E-mail: **************.
+彭渤生，性别男，2004年生，学位(或目前学历)，职称，是/否计算机学会(CCF)会员（提供会员号）,主要研究领域为*****、****.E-mail: **************.邢骏洋，性别男，2004年生，本科生，职称，主要研究领域为机器学习、图形化界面软件测试、大语言模型.E-mail: xingjunyang@smail.nju.edu.cn. 王京（通信作者），性别男，xxxx年生，学位(或目前学历)，职称，是/否计算机学会(CCF)会员（提供会员号）,主要研究领域为*****、****.E-mail: **************.肖家升男，性别，xxxx年生，学位(或目前学历)，职称，是/否计算机学会(CCF)会员（提供会员号）,主要研究领域为*****、****.E-mail: **************.
 第1作者手机号码(投稿时必须提供，以便紧急联系，发表时会删除): … …, E-mail: … …*此部分6号宋体*
 \end{songti}
 \end{tabular}\end{table*}
@@ -167,7 +163,7 @@ key word; key word; key word* *字体为5号Times new Roman * Key words }\par}
 \zihao{5}
 \vskip 1mm
 
-% TODO: 正文内容
+% 正文内容
 \section{引言}
 \songti
 随着信息化的发展，软件系统的数量、规模和复杂度不断增大。在软件系统的开发过程的，软件测试与漏洞发掘总是至关重要的。遗留的漏洞可能遭受黑客的利用，造成重大的经济损失和信息泄露。例如，2024年7月美国网络安全公司CrowdStrike发布异常更新，导致全球超过850万台Windows设备陷入“蓝屏死机”循环，甚至无法启动。此事件导致银行、航空、电信等多个关键行业的业务中断，重创了包括澳大利亚政府在内的多个组织的基础设施。尽管这一问题迅速被修复，但它揭示了软件更新测试不足和对关键依赖过于集中所带来的高风险\cite{Jones}。另一个例子是2017年的勒索软件WannaCry攻击，这次攻击影响了大约150个国家的约23万至30万台计算机,估计全球经济损失达40至80亿美元。 这次攻击发生的原因是用户没有使用 Microsoft Windows 发布的安全补丁更新他们的系统\cite{Maria}。
@@ -181,213 +177,187 @@ key word; key word; key word* *字体为5号Times new Roman * Key words }\par}
 一个扩展的想法是基于语法生成测试用例\cite{Cornelius, Martin}来为基于生成和变异的模糊测试其提供更好的能力。这种方法利用目标程序接受的输入的形式化语法规范来指导测试用例的生成。通过遵循预定义的语法规则，可以生成在语法上有效的输入，提高测试的效率。与随机生成相比，基于语法的方法能够更好地处理具有复杂输入格式的程序，如编译器、解释器等。此外，将代码片段内联到语法结构中有助于探索代码中的复杂路径，并通过做出使用上下文无关语法无法执行的精确决策来执行复杂操作。但是，它需要对输入语言语法有深入的了解，并且可能需要为复杂或专有的输入语言开发自定义语法。然而，生成的测试用例可能并不总是包含意外或恶意内容，需要进一步变异或生成以增加发现漏洞和错误的可能性。
 \vspace {10mm}
 
-\section{基础变异策略}
+\section{基于变异的测试用例生成技术}
 
-\subsection{AFL的经典变异策略及其变种}
+\subsection{基础变异策略}
 
-AFL（American Fuzzy Lop）作为一个里程碑式的模糊测试工具，其变异策略具有代表性。AFL采用了一种混合变异策略，包括确定性变异和随机变异两种方式。确定性变异（Deterministic Strategy）的含义是指基于一组预定义的规则或模式进行的变异操作，这些操作是可以预测的，这在AFL中主要体现在以下几个方面，首先是位翻转（Bit Flip），即将输入中的某一位取反。其次是字节翻转（Byte Flip）即将输入中的某一个字节取反；还包括算术变异，即对输入中的整数进行加减操作以及按序插入已知的特殊整数值。而非确定性变异（Non-Deterministic Strategy）则是指基于随机性的变异操作，这些操作是不可预测的，堆叠式位翻转(Stacked bit flips)，插入操作(Insertions)，删除操作(Deletions)，算术运算(Arithmetics)，测试用例拼接(Test case splicing)等都属于这方面。
+\subsubsection{AFL的经典变异策略及其变种}
 
-AFL同时基于进化算法进行输入队列管理，采用类似自然选择的机制，保留那些能触发新路径的测试用例，通过能量分配机制，优先处理更有潜力的测试用例，定期进行队列精简，去除冗余用例\cite{Zhang}。然而，AFL的变异策略也存在一些局限性，而针对AFL的哈希冲突问题，CollAFL提供了更准确的路径覆盖信息\cite{Collafl}，提出了三种变异引导策略：
+AFL（American Fuzzy Lop）作为一个里程碑式的模糊测试工具，其变异策略具有代表性。AFL采用了一种混合变异策略，包括确定性变异和随机变异两种方式。确定性变异（Deterministic Strategy）的含义是指基于一组预定义的规则或模式进行的变异操作，这些操作是可以预测的，这在AFL中主要体现在位翻转（Bit Flip）：将输入中的某一位取反，字节翻转（Byte Flip）：将输入中的某一个字节取反，算术变异：对输入中的整数进行加减操作，按序插入已知的特殊整数值。
 
-\begin{itemize}
-  \item 未触及邻居分支引导：关注当前执行路径的直接可达区域
-  \item 未触及邻居后代引导：扩展搜索范围到可传递达到的程序区域
-  \item 内存访问引导：特别关注可能导致内存问题的程序位置
-\end{itemize}
+而非确定性变异（Non-Deterministic Strategy）则是指基于随机性的变异操作，这些操作是不可预测的，这在AFL中主要体现在堆叠式位翻转(Stacked bit flips)，插入操作(Insertions)，删除操作(Deletions)，算术运算(Arithmetics)，测试用例拼接(Test case splicing)\cite{Zhang}。
 
-这样一个完整的变异决策体系，不仅提高了变异的精确性，还保持了低开销的插桩。除此之外，对于AFL主要的优化方向的例子如下：
+AFL同时基于进化算法进行输入队列管理，采用类似自然选择的机制，保留那些能触发新路径的测试用例，通过能量分配机制，优先处理更有潜力的测试用例，定期进行队列精简，去除冗余用例。然而，AFL的变异策略也存在一些局限性，而针对AFL的哈希冲突问题，CollAFL提供了更准确的路径覆盖信息\cite{Collafl}，提出了三种变异引导策略：未触及邻居分支引导关注当前执行路径的直接可达区域，未触及邻居后代引导扩展搜索范围到可传递达到的程序区域，内存访问引导特别关注可能导致内存问题的程序位置。
 
-\begin{itemize}
-  \item 多种优化方式的集成：在AFL的基础上集成其他先进fuzzer的优化方式，如AFL++\cite{Fioraldi}
-  \item 改进变异策略：例如FairFuzz针对难抵达的分支进行优化，AFLGo专注于获取代码的某些部分的覆盖，PerfFuzz用于查找可能显著减慢程序速度的测试用例，Pythia预测找到新路径的难度，Angora使用新的策略进行变异以增加覆盖范围，Neuzz利用神经网络进行模糊测试\cite{Chang}
-  \item 基于QEMU和Unicorn的改进：对于基于QEMU的改进，有TriforceAFL和afl-unicorn等项目，它们允许在QEMU模式下对整个操作系统进行模糊测试\cite{Chang}。
-\end{itemize}
+这样一个完整的变异决策体系，不仅提高了变异的精确性，还保持了低开销的插桩。除此之外，对于AFL主要的优化方向包括多种优化方式的集成：在AFL的基础上集成其他先进fuzzer的优化方式，如AFL++\cite{Fioraldi}；改进变异策略：例如FairFuzz针对难抵达的分支进行优化，AFLGo专注于获取代码的某些部分的覆盖，PerfFuzz用于查找可能显著减慢程序速度的测试用例，Pythia预测找到新路径的难度，Angora使用新的策略进行变异以增加覆盖范围，Neuzz利用神经网络进行模糊测试；基于QEMU和Unicorn的改进：对于基于QEMU的改进，有TriforceAFL和afl-unicorn等项目，它们允许在QEMU模式下对整个操作系统进行模糊测试\cite{Chang}。
 
-\section{高级变异技术}
+\vspace {10mm}
 
-\subsection{基于程序分析的变异}
+\subsection{新型变异生成技术}
+
+在模糊测试领域，输入生成的质量和效率直接影响着测试的有效性。传统的模糊测试方法在处理复杂程序时面临诸多挑战：一是难以有效探索深层次的程序路径，特别是那些被复杂约束条件保护的代码分支；二是对于具有特定格式要求的输入，随机变异难以生成符合规范的测试用例；三是在处理魔法数字和嵌套校验和等验证机制时效率低下。早期的研究工作如Miller等人提出的随机字符流注入方法\cite{Miller}以及Sutton等人开发的基于突变的模糊测试框\cite{Sutton}，虽然奠定了模糊测试的基础，但在处理结构化输入和复杂程序逻辑时表现出明显的局限性。为了克服这些限制，研究人员提出了多种基于程序分析的新型变异技术。通过引入符号执行、污点分析、梯度下降等技术，新一代的模糊测试工具极大地提升了测试效率和覆盖率。
+
+\vspace{10mm}
+
+\subsubsection{基于程序分析的新型生成技术}
 在模糊测试输入生成的评估中，如何提高路径尤其是复杂深层次的路径以及提高测试用例的生成效率是非常重要的参考指标。AFL作为里程碑式的工具通过反馈机制实现了简单易用以及相对高效的随机生成机制。但是AFL仍然存在着复杂和深层次路径难以探索、针对复杂输入格式时难以生成符合规范的输入和路径探索相对随机等问题。在后期发展的各种框架工具中，基于程序分析的符号执行和污点跟踪技术很好的解决了上述问题。
 
 魔法数字和嵌套校验和也是模糊测试中常见的两大难题。魔法数字通常指的是程序中用于验证输入完整性的特定值，而嵌套校验和则涉及到更复杂的数据完整性验证，如在多层数据结构中计算和比较校验和。这些校验机制的存在显著增加了模糊测试的难度，因为随机生成的输入很难通过这些校验，从而导致测试覆盖率降低。为了克服这些难题，研究人员开发了多种技术，包括基于污点分析的方法和基于符号执行的方法，以提高模糊测试的效率和效果。这些技术通过分析程序的行为和输入数据的流向，自动生成能够通过校验的测试用例，从而深入探索程序的状态空间，发现潜在的安全漏洞。
 
 TaintScope\cite{TaintScope}是一个经典的基于动态污点分析和符号执行技术的模糊测试工具，它在无需访问源代码或精确了解平台指令集的情况下，自动检测输入中的校验字段并精确定位程序中的校验基于完整性检查。该工具的主要贡献在于其能够通过控制流修改来绕过这些校验，从而显著提高模糊测试的覆盖率和效率。TaintScope不仅能够识别和绕过校验检查，还能自动修复生成输入中的校验值，使其能够触发潜在的漏洞。这一方法有效地结合了污点跟踪和符号执行的优点。
 
-GreyOne\cite{GREYONE}是一种先进的数据流敏感模糊测试技术，其关键技术包括轻量级且准确的污点推断FTI、基于污点的输入优先级模型以及约束一致性引导的进化策略。FTI通过监控输入变异时变量值的变化来推断变量的污点状态，这种方法不仅避免了传统污点分析中的劳动密集型工作，而且提高了污点分析的准确性和运行时效率。GreyOne利用FTI提供的污点信息来确定哪些输入字节应该优先变异以及如何变异，以探索更多未触及的代码路径。此外，通过考虑污点变量与未触及分支中预期值的距离（即约束一致性），GreyOne能够调整其进化方向，更有效地探索难以到达的分支。这些技术的结合使得GreyOne在代码覆盖率和漏洞发现方面超越了多种现有的模糊测试工具，展现出其在模糊测试领域的显著优势。
+\begin{figure}[htbp]
+  \centerline{\includegraphics[width=3.15in,height=0.5in]{./image/TaintScope.png}}
+  \begin{center}
+    图1\quad  TaintScope 系统架构\cite{TaintScope}
+  \end{center}
+  \label{fig1}
+\end{figure}
 
-T-Fuzz\cite{T-Fuzz}是一种基于程序变换的模糊测试方法，它通过移除目标程序中的输入检查来提高代码覆盖率。T-Fuzz利用覆盖引导的模糊测试生成输入，并在模糊测试无法触发新代码路径时，使用轻量级的动态追踪技术检测输入检查，然后将这些检查从目标程序中移除。这种方法允许之前被检查保护的代码被触发，从而有可能发现潜在的错误。T-Fuzz面临的挑战包括移除检查可能导致过度近似和误报，以及在变换程序中触发的崩溃输入可能不会在原始程序中触发错误。为了解决这些问题，T-Fuzz采用了基于符号执行的方法作为辅助的后处理步骤，以过滤掉误报并在原始程序中复现真正的错误。通过变换程序和输入变异，T-Fuzz能够覆盖更多的代码，并发现比现有技术更多的真实错误。
+GreyOne\cite{GREYONE}是一种更先进的数据流敏感模糊测试技术，其关键技术包括轻量级且准确的污点推断FTI、基于污点的输入优先级模型以及约束一致性引导的进化策略。FTI通过监控输入变异时变量值的变化来推断变量的污点状态，这种方法不仅避免了传统污点分析中的劳动密集型工作，而且提高了污点分析的准确性和运行时效率。GreyOne利用FTI提供的污点信息来确定哪些输入字节应该优先变异以及如何变异，以探索更多未触及的代码路径。此外，通过考虑污点变量与未触及分支中预期值的距离（即约束一致性），GreyOne能够调整其进化方向，更有效地探索难以到达的分支。这些技术的结合使得GreyOne在代码覆盖率和漏洞发现方面超越了多种现有的模糊测试工具，展现出其在模糊测试领域的显著优势。
 
-Angora\cite{angora}是一种基于变异的模糊测试工具，它通过引入一系列关键技术来提高路径覆盖率，有效解决了路径约束问题。Angora的主要目标是在不使用符号执行的情况下，通过解决路径约束来增加分支覆盖。它采用了可扩展的字节级污点跟踪技术，这种技术通过跟踪输入字节如何流入程序中的每个路径约束，使得Angora能够只变异那些影响路径约束的字节，而不是整个输入，从而大幅减少了探索空间。此外，Angora还采用了基于梯度下降的搜索算法，这种算法在机器学习中非常流行，它避免了昂贵的符号执行，并且能够高效地解决路径约束。Angora还进行了类型和形状推断，这使得梯度下降算法能够更有效地搜索，因为它能够识别输入中哪些字节被集体用作单个值，并推断出这些值的类型。最后，Angora还探索了输入长度，因为某些程序状态只有在输入长度超过某个阈值时才会被探索，而Angora能够检测到这一点并适当增加输入长度。
+T-Fuzz\cite{T-Fuzz}是另一种基于程序变换的模糊测试方法，它通过移除目标程序中的输入检查来提高代码覆盖率。T-Fuzz利用覆盖引导的模糊测试生成输入，并在模糊测试无法触发新代码路径时，使用轻量级的动态追踪技术检测输入检查，然后将这些检查从目标程序中移除。这种方法允许之前被检查保护的代码被触发，从而有可能发现潜在的错误。T-Fuzz面临的挑战包括移除检查可能导致过度近似和误报，以及在变换程序中触发的崩溃输入可能不会在原始程序中触发错误。为了解决这些问题，T-Fuzz采用了基于符号执行的方法作为辅助的后处理步骤，以过滤掉误报并在原始程序中复现真正的错误。通过变换程序和输入变异，T-Fuzz能够覆盖更多的代码，并发现比现有技术更多的真实错误。
+
+Angora\cite{angora}同样是一种基于变异的模糊测试工具，它通过引入一系列关键技术来提高路径覆盖率，有效解决了路径约束问题。Angora的主要目标是在不使用符号执行的情况下，通过解决路径约束来增加分支覆盖。它采用了可扩展的字节级污点跟踪技术，这种技术通过跟踪输入字节如何流入程序中的每个路径约束，使得Angora能够只变异那些影响路径约束的字节，而不是整个输入，从而大幅减少了探索空间。此外，Angora还采用了基于梯度下降的搜索算法，这种算法在机器学习中非常流行，它避免了昂贵的符号执行，并且能够高效地解决路径约束。Angora还进行了类型和形状推断，这使得梯度下降算法能够更有效地搜索，因为它能够识别输入中哪些字节被集体用作单个值，并推断出这些值的类型。最后，Angora还探索了输入长度，因为某些程序状态只有在输入长度超过某个阈值时才会被探索，而Angora能够检测到这一点并适当增加输入长度。
 \vspace {10mm}
 
-\subsection{基于输入与程序状态对应关系的变异}
+\subsubsection{基于输入与程序状态对应关系的新型生成技术}
 REDQUEEN\cite{redqueen}是一种新颖的模糊测试方法，它基于输入到状态的对应关系，以提高反馈驱动模糊测试的效率和效果。这种方法特别针对两个常见的模糊测试难题：魔术数字和（嵌套）校验和，这些问题通常需要复杂的程序分析技术，如污点跟踪和符号执行来解决。REDQUEEN通过在程序执行过程中观察输入与程序状态之间的直接对应关系，实现了一种轻量级且高效的解决方案，无需访问源代码或对平台指令集的精确语义。
 	与前述两篇论文中提到的Angora和T-Fuzz相比，REDQUEEN在几个关键方面进行了改进和优化。首先，REDQUEEN不依赖于符号执行或污点跟踪，这使得它在大型二进制应用程序和未知环境中更容易扩展且高效。其次，REDQUEEN通过“着色”输入和程序追踪，创建了一种轻量级的污点跟踪近似方法，从而有效地识别和解决魔术数字和校验和问题。此外，REDQUEEN还能够自动修复通过校验和的输入，而无需人工干预或复杂的符号执行方法，这在Angora和T-Fuzz中是不具备的。
   \vspace {10mm}
   
-\subsection{基于路径感知的变异}
+\subsubsection{基于路径感知的新型生成技术}
 PATA\cite{PATA}的主要贡献在于其创新性地将路径感知的污点分析技术融入到模糊测试中，显著提升了对复杂软件漏洞的发现能力。传统的模糊测试技术依赖于随机或基于覆盖率的输入变异，而PATA通过精确识别输入数据与程序执行路径中特定变量的依赖关系，实现了对输入数据的智能变异。这种路径感知的污点分析能够区分同一变量在不同执行路径上的多次出现，解决了传统技术在面对循环和多次函数调用时的局限性，从而避免了过污点和欠污点的问题。PATA首先通过构建代表性变量序列（RVS），记录变量在执行路径上的所有出现及其值，然后通过输入微调并匹配RVS来识别影响这些变量值的关键输入字节。这种方法不仅提高了变异的针对性，还增强了模糊测试在探索程序逻辑和发现新漏洞方面的效率。
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=3.15in,height=0.8in]{./image/PATA.png}}
+\begin{center}
+  图2\quad  PATA整体设计\cite{PATA}
+\end{center}
+\label{fig2}
+\end{figure}
+
 此外，PATA的先进性还体现在其路径导向的变异策略上。利用路径感知污点分析的结果，PATA能够精确地识别出对于每个变量出现至关重要的输入字节，并结合变量的特征和值，选择最合适的变异方法来绕过约束，探索程序状态空间中未被覆盖的分支。这种策略使得PATA在面对复杂的程序逻辑和深层次的漏洞时，能够更加高效地触发新的执行路径和基本块，从而发现更多的独特路径和基本块覆盖。在多个基准测试和真实世界的项目中，PATA相较于现有的先进模糊测试工具，展现出了显著的性能提升，不仅在路径和基本块覆盖上超越了其他工具，而且在漏洞发现方面也表现出色，这进一步证明了PATA在模糊测试领域的创新性和先进性。
 \vspace {10mm}
 
-\section{定向与智能变异}
+\subsection{定向与智能变异}
 
-\subsection{定向模糊测试}
+在当前软件系统日益复杂的背景下，传统的模糊测试方法往往表现出效率低下和资源浪费等问题。为了解决这个问题，研究人员提出了定向模糊测试和基于机器学习的智能变异方法，试图通过更精准的目标导向和更智能的决策机制来提升测试效果。定向模糊测试通过明确的目标导向，将有限的计算资源集中在最可能存在问题的程序区域，显著提升了测试效率。与此同时，机器学习技术的引入为测试过程带来了全新的智能决策能力，能够从历史数据中学习经验，预测最有价值的测试方向。这两种方法的结合代表了模糊测试技术的未来发展方向，即从"大海捞针"式的随机测试向精准化、智能化的方向演进。
 
-定向模糊测试（Directed Fuzzing）是一种有目标性的模糊测试方法，其核心思想是针对程序中特定的代码位置或功能进行测试，通过各种策略引导测试过程到达目标位置，集中资源测试可能存在风险的区域。定向模糊测试的主要技术手段主要包含静态分析确定目标位置，符号执行计算路径约束，动态污点分析跟踪数据流以及启发式算法指导种子选择和变异。DGF是以启发式算法指导种子选择和变异的一个例子，它通过使用模拟退火算法为基础的功率调度，逐渐为接近目标位置的种子分配更多能量，同时减少远离目标的种子的能量，以此实现带有目标性的模糊测试。其主要的变异策略可以概括如下：
-\begin{itemize}
-\item 基于模拟退火的功率调度：AFLGo使用模拟退火算法动态调整每个种子的能量，优先考虑那些更接近目标位置的种子
-\item 全局搜索：AFLGo实现了全局搜索，与AFL的局部搜索相比，能够更有效地接近全局最优解，即覆盖最多的目标位置
-\item 并行搜索：AFLGo同时搜索所有目标，提高了搜索效率，并允许同时对多个目标进行模糊测试
-\item 种子距离计算：AFLGo计算每个种子到目标位置的距离，并根据这个距离来调整种子的能量，使得更接近目标的种子获得更多的测试机会
-\item 能量分配：AFLGo根据种子与目标位置的距离和当前时间来分配能量，确保在测试过程中，能量分配能够逐渐向目标位置倾斜
-\end{itemize}
-
-DGF同时还可以集成现有灰盒模糊测试，与现有的灰盒模糊测试工具（如AFL）集成，利用其轻量级的程序分析和覆盖信息来指导变异过程\cite{Böhme}。
+在这一技术背景下，众多研究工作致力于探索如何更好地实现定向测试和智能决策。这些工作在目标识别、路径规划、资源调度等多个方面都取得了重要进展，为提升软件测试的效率和精确度提供了新的思路。
 
 \vspace {10mm}
 
-\subsection{机器学习辅助}
+\subsubsection{定向模糊测试}
 
-机器学习技术在模糊测试领域的应用正在带来革新性的影响。通过对大量测试数据的学习和分析，ML可以帮助优化测试过程中的多个关键环节。在种子生成和选择方面，机器学习模型能够预测种子的质量和潜在价值，从而更智能地分配测试资源。在变异策略上，ML可以通过学习历史数据来识别最有效的变异模式，提高发现新执行路径的效率。在路径探索方面，机器学习算法能够分析程序结构特征，预测更可能存在漏洞的代码区域，从而指导测试过程更有针对性地进行探索。深度学习模型可以用于预测程序崩溃的概率，强化学习则可以持续优化测试策略。这些技术的应用大大提升了模糊测试的效率和效果。 Learn\&Fuzz的工作展示了机器学习在测试用例生成中的潜力。具体而言，Learn\&Fuzz采用了以下四种变异生成测试的方式\cite{Godefroid}：
+定向模糊测试（Directed Fuzzing）是一种有目标性的模糊测试方法，其核心思想是针对程序中特定的代码位置或功能进行测试，通过各种策略引导测试过程到达目标位置，集中资源测试可能存在风险的区域。定向模糊测试主要依靠静态分析确定目标位置，符号执行计算路径约束，动态污点分析跟踪数据流以及启发式算法指导种子选择和变异等技术手段。以DGF为例，它基于模拟退火算法进行功率调度，通过为接近目标位置的种子分配更多能量，同时减少远离目标种子的能量，实现了目标导向的模糊测试。DGF采用模拟退火算法动态调整种子能量，实现全局搜索以覆盖更多目标位置，并支持并行搜索提升效率。它通过计算种子到目标位置的距离来调整能量分配，确保测试资源逐渐向目标位置倾斜。此外，DGF还可以与现有灰盒模糊测试工具（如AFL）集成，利用其轻量级的程序分析和覆盖信息来指导变异过程\cite{Böhme}。
 
-\begin{itemize}
-  
-  \item NoSample（无采样： 使用学习到的分布来贪婪地预测给定前缀下的最佳字符。这会导致生成的PDF对象最有可能是格式良好且一致的。
-  \item Sample（采样）： 使用学习到的分布来采样序列中的下一个字符，而不是选择预测最高的字符。这种采样策略能够通过结合模型从训练语料中学习到的各种模式，生成多样化的新PDF对象。
-  \item SampleSpace（样本空间）：这种采样策略结合了Sample和NoSample策略。它只在当前缀序列以空白字符结束时才采样分布来生成下一个字符，而在标记内部（即前缀以非空白字符结束时）使用分布中最佳预测的字符，类似于NoSample策略。这种策略预期会生成比Sample策略更多格式良好的PDF对象，因为采样被限制在仅在空白字符后进行。
-  \item SampleFuzz（采样模糊）: 新的算法，用于在采样新对象的同时进行模糊测试。使用学习到的模型生成新的PDF对象实例，同时引入异常以测试错误处理代码。SampleFuzz算法根据学习到的分布决定在何处模糊值。如果在特定时间戳t，模型对于某个字符c的预测概率p(c)高于用户提供的阈值pt，算法将选择一个概率最低的字符c'来替换c。这种修改（模糊）仅在随机硬币投掷的结果pfuzz高于输入参数tfuzz时发生，允许用户进一步控制模糊字符的概率。通过学习已有样本的特征
+\vspace {10mm}
 
-\end{itemize}
+\subsubsection{机器学习辅助}
 
-不过，机器学习辅助的模糊测试也面临一些挑战。首先是获取足够的高质量训练数据比较困难，其次是需要在实时性要求和推理开销之间找到平衡。此外，如何提升模型的泛化能力，以及如何更好地将ML技术与传统模糊测试方法融合，都是需要进一步研究的问题。尽管如此，机器学习在模糊测试中的应用前景仍然十分广阔。随着算法和硬件的不断进步，相信这种结合将会产生更多创新性的成果。
+机器学习技术正在为模糊测试领域带来革新性的影响。通过对海量测试数据的学习和分析，机器学习能够优化测试过程中的多个关键环节。在种子生成和选择方面，机器学习模型能够预测种子的质量和潜在价值，实现更智能的资源分配。在变异策略上，通过学习历史数据识别最有效的变异模式，提高新执行路径的发现效率。在路径探索方面，机器学习算法能够分析程序结构特征，预测潜在漏洞区域，实现更有针对性的测试。Learn$\&$Fuzz的工作展示了机器学习在测试用例生成中的潜力，它通过无采样预测、概率采样、空间采样和采样模糊等多种策略\cite{Godefroid}，结合模型从训练语料中学习到的模式生成多样化的测试用例，同时在特定条件下引入异常以测试错误处理代码。
 
-\clearpage\clearpage
-% TODO: 正文内容结束
-% 以下是可参考的用法
-% \section{一级标题*字体为4号黑体*标题1}
-% \textbf{对投稿的基本要求}：
- 
-% \songti  
-% (1) 研究性论文主体应包括引言(重点论述研究的科学问题、意义、解决思路、价值、贡献等)、相关工作(为与引言部分独立的一个章节)、主要成果论述、关键实现技术、验证(对比实验或理论证明)、结论(结束语)等内容；系统实现或实验应有关键点的详细论述，以便读者能够重复实现论文所述成果。实验应有具体的实验环境设置、全面细致的数据对比分析。
+然而，机器学习辅助的模糊测试也面临获取高质量训练数据困难、实时性要求与推理开销的平衡、模型泛化能力提升以及与传统方法融合等挑战。尽管如此，随着算法和硬件的持续进步，机器学习在模糊测试中的应用前景依然广阔，这种结合必将催生更多创新性的成果。
 
-% (2) 综述应包括引言、问题与挑战、研究现状分析、未来研究方向、结论等内容。以分析、对比为主，避免堆砌文献或一般性介绍、叙述。
+\vspace {10mm}
 
-% (3) 定理证明、公式推导、大篇幅的数学论述、原始数据，放到论文最后的附录中。
+\section{基于语法规则的测试用例生成技术}
 
-% {\bf 稿件提交时的基本要求：}
+\subsection{传统的基于语法的测试用例生成技术概述}
 
-% (1) 本模板中要求的各项内容正确齐全，无遗漏；
+传统的基于语法的模糊测试用例生成技术在现代软件测试中扮演着重要角色。与黑盒随机模糊测试和基于约束的白盒模糊测试相比，基于语法的模糊测试在生成有效测试用例方面展现出显著优势。
 
-% (2) 语句通顺，无中文、英文语法错误，易于阅读理解，符号使用正确，图、表清晰无误；
+基于语法的模糊测试的核心在于输入语法的定义。传统上，测试人员根据应用程序需求手动编写语法规则，涵盖数据类型、结构和约束等。然而，这一过程往往繁琐且容易出错，特别是在处理HTML、XML、JSON等复杂的结构化输入时，语法规则的编写需考虑多种情况和边界条件。此外，手动编写的语法规则可能不够全面，导致生成的测试用例无法覆盖所有潜在输入场景，从而影响测试效果。在定义输入语法后，基于语法的模糊测试利用该语法生成测试用例。传统的测试用例生成方法包括随机生成和组合生成：随机生成通过随机选择语法中的词法单元构造输入数据，虽然实现简单，但可能导致生成的测试用例缺乏针对性，无法有效覆盖潜在缺陷；而基于组合生成的方法通过分析语法结构，系统性地组合不同语法元素，生成更为多样化和有效的测试用例。
 
-% (3) 在学术、技术上，论文内容正确无误，各项内容确定。
+基于语法的模糊测试在处理复杂结构化输入时，如在网页浏览器、网络协议解析器和数据解析器等领域，展现出了显著优势。这些应用程序往往需要处理”不可信“的输入，如用户提交的HTML、JavaScript代码或网络请求数据等。在这一条件下，基于语法的模糊测试仍能生成符合预期格式的输入，有助于发现潜在的安全漏洞和程序缺陷。
 
-% \vspace {10mm}
+\vspace {10mm}
+\subsubsection{输入类型}
 
-% {\heiti \subsection{二级标题 *字体为5号黑体*标题2} }
-% \subsubsection{三级标题 *字体为5号宋体*标题3}
-% *正文部分, 字体为5号宋体* 正文文字
+基于语法的模糊测试在软件测试中常用的输入类型主要包括结构化输入、边界值输入、特定格式输入和语义输入。结构化输入是基于语法的模糊测试中最常见的输入类型，主要用于处理复杂数据结构的应用，如网络协议解析器、数据解析器和网页浏览器等。这类输入通常通过上下文无关文法（CFG）定义和生成，测试工具根据语法规则构造符合要求的数据。例如，在测试解析JSON数据的应用时，工具根据JSON的语法规则生成合法JSON对象，验证应用的处理能力。
 
-% \textbf{正文文字要求语句通顺，无语法错误，结构合理，条理清楚，不影响审稿人、读者阅读理解全文内容。以下几类问题请作者们特别注意}：
+此外，边界值输入关注输入数据的边界情况，如最小值、最大值、空值和超出范围的值等，常用于测试应用程序在处理极端输入时的表现。基于“边界值分析”原则，这种输入类型帮助发现整数溢出、下溢或不当处理等问题。例如，测试一个处理整数的函数时，边界值输入可以包括最大、最小整数及零等，以揭示潜在的逻辑错误和处理漏洞。
 
-% 1) 文章题目应明确反映文章的思想和方法；文字流畅，表述清楚；
+另一种特定格式输入是根据应用程序需求生成的输入数据，主要用于测试需要解析特定格式的应用。生成此类输入需要深入分析目标格式，以确保数据符合预定的语法要求。举例来说，在测试网页浏览器解析HTML文档时，特定格式输入可能包括合法的HTML标签和属性，以测试浏览器在解析和渲染时的稳定性与安全性。
 
-% 2) 中文文字、英文表达无语法错误；
+语义输入是一种较为高级的输入类型，它不仅符合语法规则，还符合语义上的合理性。生成语义输入需要对应用程序的业务逻辑和语义进行深度分析，以确保模拟真实场景中的用户行为。例如，在测试电子商务网站时，语义输入可能包括合法的产品名称、价格和数量，以测试系统处理这些输入时的反应。语义输入能够更真实地反映用户操作习惯，帮助开发者发现潜在的业务逻辑错误和安全漏洞。与其他类型的输入相比，语义输入在保证符合规则的同时，也能验证应用程序的实际功能和交互合理性。
+\vspace {10mm}
+\subsubsection{基础理论与方法}
 
-% 3) 公式中无符号、表达式的疏漏，没有同一个符号表示两种意思的情况；
+基于语法规则的测试用例生成方法通常依赖于程序或系统的语法描述，结合形式化的语言或模型，自动生成符合预期的输入数据。该方法通常涉及文法模型、语法生成器和语法树构建等关键组成部分。
 
-% 4) 数学中使用的符号、函数名用斜体；
+上下文无关文法（CFG）是形式语言理论中的重要工具，广泛应用于编程语言的定义和自动化测试。CFG通过终结符、非终结符、产生式和开始符号构成，能够清晰地描述编程语言的语法结构。例如，C语言的语法规则可以通过CFG建模，使编译器能够解析源代码并生成相应的抽象语法树（AST）。在模糊测试中，CFG的应用同样重要，研究者们利用CFG生成合法的测试用例，以覆盖程序中的不同代码路径\cite{differential}。例如，FuzzGAN框架中的增强上下文无关文法（enriched CFG）不仅关注语法结构，还引入了额外的语义约束，以确保生成的代码在语法和语义上均有效。这种方法显著提高了生成程序的质量，降低了无效代码的生成概率，从而提升了模糊测试的有效性。
 
-% 5) 使用的量符合法定计量单位标准；
+语法生成器是一种自动化工具，旨在根据特定的语法规则生成合法的程序或输入数据。它在编程语言的设计与实现中扮演着关键角色，尤其在编译器构建和模糊测试应用中。通过利用CFG，语法生成器能够生成符合语言语法规范的代码，为程序的验证和测试提供支持。在模糊测试中，语法生成器通过遵循特定的语法规则生成合理的测试输入，从而提高测试的覆盖率和有效性。如在FuzzGAN框架中，研究者利用生成对抗网络（GAN）结合语法生成器，自动生成符合C语言语法的测试用例。这种方法不仅提高了测试用例的质量，还能够有效识别编译器中的潜在错误和漏洞。
 
-% 6) 矢量为黑体，标量为白体；
+语法树构建是编译器设计和程序分析中的重要环节，将源代码转换为结构化的表示形式，即抽象语法树（AST）。AST有效反映程序的语法层次和逻辑关系，为后续的语义分析、优化和代码生成提供支持。构建AST的过程包括词法分析和语法分析，前者将源代码分解为词法单元，后者则利用CFG对词法单元进行解析，检查其是否符合语言的语法规则。在模糊测试中，语法树构建同样发挥着重要作用：生成合法的AST使得模糊测试工具能够自动生成符合特定语法的测试用例，从而提高测试的有效性和覆盖率。例如，DEEPFUZZ框架通过训练生成模型，学习原始测试数据中的语法模式，生成新的合法程序，覆盖更多的代码路径，有助于发现潜在的缺陷和安全漏洞。
+\vspace {10mm}
+\subsection{基于学习的新型生成技术}
 
-% 7) 变量或表示变化的量用斜体；
+随着深度学习和人工智能技术的不断发展，基于学习的测试用例生成方法逐渐成为模糊测试领域的重要研究方向。相比传统的随机生成或规则驱动的方法，这些方法通过学习输入数据的特征和规律，自动生成更加智能、精准的测试用例，能够有效提升测试覆盖率和测试质量。基于学习的生成技术不仅能够应对复杂系统中的多样性和高维度问题，还能根据应用上下文和输入数据的分布进行智能化的测试用例设计，从而更好地发现程序中潜在的缺陷和漏洞。
 
-% 8) 图表规范，量、线、序无误，位置正确(图表必须在正文中有所表述后出现，即{\ldots}如图1所示)(注意纵、横坐标应有坐标名称和刻度值)。
+Zest是一种创新的基于语法的测试用例生成方法\cite{zest}，该技术首先将类似QuickCheck的随机输入生成器转化为确定性参数生成器，通过这种转化，Zest能够将一系列未类型化的比特（称为“参数”）映射为语法合法的输入。这一过程强调了对输入生成的精确控制，确保生成的输入不仅符合特定的语法规则，还能为后续的测试分析，特别是语义分析阶段，提供有效的测试用例。Zest的核心在于采用突变策略引导生成新的测试输入，这与覆盖引导模糊测试（Coverage-guided fuzzing, CGF）的方法相似。通过在比特层面进行突变操作，Zest能够引发语法合法的结构突变，从而有效探索更复杂的语法结构，增强代码的覆盖率。与传统的随机输入生成方法相比，Zest提供了一种更高效且定向的测试用例生成方式，确保输入的语法合法性，避免了生成无效输入的常见问题。Zest专注于生成能够触发语义分析阶段错误的有效输入，提升了测试的深度与广度。
 
-% 9) 列出的参考文献必须在文中按顺序引用，即参考文献顺序与引用顺序一致，各项信息齐全(格式见参考文献部分)；
+DeepFuzz是一种自动化的语法基础模糊测试工具，旨在持续生成符合语法的C程序，以有效测试生产编译器\cite{DeepFuzz}。具体而言，DeepFuzz能够生成具有不同复杂度和功能的程序，包括简单的函数调用、条件语句和循环结构，这种多样性有助于全面测试编译器的处理能力。此外，DeepFuzz在输入生成过程中采用预处理步骤，去除注释、统一空白字符并合理处理宏定义，确保生成程序的风格一致性和语法正确性，避免因格式不一致或语法错误导致的测试失败。同时，DeepFuzz通过对生成程序的自动验证，确保其在语法上有效，进一步提高了测试的可靠性。最后，DeepFuzz的输入生成技术具有高效性和可扩展性，通过并行化生成过程，能够快速生成大量测试用例，显著缩短模糊测试的时间，其生成模型可根据不同测试需求进行调整和扩展，以适应不同编译器和程序特征。这种灵活性使DeepFuzz能够在多种环境下有效应用，提升编译器的稳定性和安全性。
 
-% 10) 首次出现的缩写需写明全称，首次出现的符号需作出解释。
+\begin{figure}[htbp]
+  \centerline{\includegraphics[width=3.15in,height=1.2in]{./image/DeepFuzz.png}}
+  \begin{center}
+    图3\quad  DeepFuzz 系统架构\cite{DeepFuzz}
+  \end{center}
+  \label{fig1}
+\end{figure}
 
-% 11) 图的图例说明、坐标说明全部用中文或量符号。
+现今的研究将深度学习模型引入到模糊测试中，通过学习大量的输入数据，生成更加智能、精准的测试用例，提升测试的效率和效果。这些技术在模糊测试领域展现出了强大的潜力，有望成为未来软件测试的重要发展方向。
 
-% \textbf{12) 图应为矢量图。}
+FuzzGAN是一种基于生成对抗网络（GAN）的创新模糊测试框架\cite{FuzzGAN}，旨在增强深度神经网络（DNN）在对抗性输入下的鲁棒性。该框架通过生成模型与判别模型的对抗训练机制，专注于生成多样化且具有挑战性的测试用例，以有效检测DNN中的潜在脆弱性。FuzzGAN的输入生成技术具有显著优势，首先通过训练生成模型学习原始输入数据的分布，从而合成符合该分布的样本。这种方法不仅确保生成的测试用例在语法和语义上与原始输入相似，还能捕捉数据中的复杂特征和模式，提升测试用例的有效性和多样性。与传统的基于突变的模糊测试方法相比，FuzzGAN生成的输入不再局限于简单变换，而是能够生成更加复杂和多样的对抗样本，从而更全面地评估DNN的鲁棒性。
 
-% 13) 表中表头文字采用中文。
+CAGFuzz是一种针对图像基础深度学习系统的覆盖引导对抗生成模糊测试方法\cite{CAGFuzz}，旨在提升深度神经网络（DNN）模型的测试效率和准确性。该方法通过引入覆盖引导的模糊测试技术，结合对抗样本生成，克服了传统对抗生成方法在迁移性和深层特征提取方面的不足。CAGFuzz的核心在于其输入生成技术，具体包括基于一般数据集训练的对抗样本生成器（AEG），该生成器不仅考虑了数据特征，还通过余弦相似度约束确保生成的对抗样本在深层特征上保持一致性，从而有效提高了对抗样本的迁移性。其输入生成过程具有显著优势，能够生成针对主流DNN模型的对抗样本，揭示潜在的错误和缺陷。同时，通过深层特征的提取与分析，CAGFuzz确保生成的对抗样本不仅在表面上类似于原始样本，而且在语义上保持一致性，这使得其在模型重训练时能够显著提高准确性。
 
-% 14) 公式尺寸：
+Automatic Text Input Generation自动文本输入生成技术能够自动生成与应用上下文相关的有效文本输入\cite{atigmt}。该方法的核心是利用深度学习模型，特别是递归神经网络（RNN），通过对大量已记录的输入数据进行训练，学习输入与应用上下文之间的关联。具体而言，RNN模型能够捕捉到用户输入的语义和上下文信息，从而在测试过程中生成与当前操作环境相匹配的文本输入。例如，在一个搜索类应用中，当用户点击搜索框时，系统可以自动生成相关的搜索关键词，而不是随机生成无意义的字符，这样不仅提高了测试的有效性，还能确保测试流程的顺利进行。通过这种方式，自动文本输入生成技术能够有效地推动测试进程，使得测试工具能够深入到应用的复杂工作流中，执行更为全面的测试。
 
-% 标准：10.5磅
+Zest、FuzzGAN、CAGFuzz、DeepFuzz和Automatic Text Input Generation这些技术通过结合深度学习、生成对抗网络、语法分析等多种方法，在模糊测试用例生成中展现出了强大的能力。
 
-% 下标/上标：5.8磅
+\vspace{10mm}
 
-% 次下标/上标：4.5磅
+\subsection{基于语法规则的新型生成技术}
 
-% 符号：16磅
+基于语法规则的生成技术通过利用程序语言的语法特性，自动生成符合特定语法规则的输入数据。与传统的随机生成或人工编写测试用例的方法不同，基于语法的生成方法能够在保证输入合法性的同时，探索更广泛的代码路径和潜在漏洞。
 
-% 次符号：10.5磅
+Grammatical Category Objects（GCO）技术是通过将上下文无关文法转换为Java类，以实现自动化测试数据的生成\cite{Beyene}。该方法的核心在于利用语法的结构特征，生成符合特定格式的字符串，从而有效地测试软件在处理这些字符串时的正确性和鲁棒性。GCO技术的实施过程首先涉及对上下文无关文法的解析与转换，生成相应的Java类（称为Grammatical Category Objects）。这些类不仅能够表示语法规则，还可以通过实例化生成符合语法的字符串。通过这种方式，GCO技术能够生成多种多样的测试用例，从而覆盖软件中的不同代码路径，提高代码覆盖率。研究表明，GCO技术在生成测试用例时，可以与其他测试方法相结合，例如一致性测试套件和启发式算法，以进一步提升测试的全面性和有效性。具体而言，GCO技术能够有效地生成深层语法树的字符串，这对于测试复杂的语法结构尤为重要。通过这种方式，测试人员能够确保生成的字符串不仅符合语法规则，还能够触发软件中可能存在的边界情况和潜在缺陷。此外，GCO技术还能够通过深度优先搜索等确定性方法，探索生成所有可能字符串的空间，从而实现对语法规则的全面覆盖。
 
-% 15) 组合单位采用标准格式，如：``pJ/bit/m$^{4}$''应为 ``pJ/(bit$\cdot
-% $m$^{4})$''
+Evolutionary Generative Fuzzing是一种基于进化生成的模糊测试技术\cite{Evo}，旨在有效发现Kotlin编译器中的潜在缺陷。该技术的核心在于创新的输入生成方法：其结合了语法特征建模和进化算法，以生成多样化的测试用例，从而全面评估编译器的功能和性能。具体而言，该模糊测试技术通过构建Kotlin语言的语义和语法模型，利用增强的上下文无关文法（CFG）生成符合Kotlin语法的随机代码片段，确保生成的输入程序在语法上有效，反映Kotlin语言的复杂特性。此外，研究者们引入基于遗传算法的输入生成策略，通过自然选择和遗传变异机制，推动生成过程朝向更为多样化和复杂的代码。这种进化方法不仅提高了生成程序的多样性，还有效覆盖了不同的语言特性，增强了模糊测试的有效性。
 
-% {\heiti\textbf{定理1}. }\quad ******. *定理内容.*
+Skyfire是一种创新的数据驱动种子生成方法，旨在为处理高度结构化输入的模糊测试程序生成高质量的种子输入\cite{Skyfire}。它比上述两种方法作用更为广泛。该方法通过利用大量样本自动提取语法和语义规则的知识，从而生成分布均匀的种子输入。Skyfire与基于变异的模糊测试方法是互补的，能够为这些方法提供高质量的种子输入，进而提升它们在处理高度结构化输入时的效率和有效性。
 
-% [``定义''、``假设''、``公理''、``引理''等的排版格式与此相同，详细定理证明、公式可放在附录中]
+需要注意的是，前述如EGF等方法能通过语义丰富的文法产生上下文感知的代码片段，以减少无效代码的生成。然而，对于多数用例生成方法，如何在生成代码时平衡语法与语义，确保生成的代码不仅符合语法规则，还能触发有意义的语义问题，仍是一个挑战。以CLP（约束逻辑编程）为例，尽管CLP能够有效地平衡语法与语义，生成具有特定语法特征和语义行为的程序，但不同编程语言的多样性使得生成过程十分复杂\cite{Dewey}。例如，强类型静态语言（如Scala）和弱类型静态语言（如C）具有不同的类型系统和内存模型，这要求生成工具能够分别处理这些特定语言的特性。另外，由于语言规范和实际实现之间常常存在差异，某些被认为是缺陷的问题可能并不被开发者视为语言错误。以typechecker fuzzing为例，部分开发者认为某些类型约束的处理方式虽然违反了类型系统的某些理论规范，但从实际编译器实现角度来看，并不算真正的错误\cite{Dewey}。这种不一致性使得测试用例生成技术不仅要关注规范的精确性，还需要考虑开发者对语言行为的接受度。
 
-% { \fangsong 证明 }.\quad  *证明过程.* [``例 x''等的排版格式相同]
-
-% \rightline {证毕.}
-
-% \begin{figure}[htbp]
-% \centerline{\includegraphics[width=3.15in,height=1.98in]{CJC1.pdf}}
-% 图X\quad  图片说明 *字体为小5号，图片应为黑白图，图中的子图要有子图说明*
-% \label{fig1}
-% \end{figure}
-
-% \begin{table}[htbp]
-% \centering {\heiti 表X\quad 表说明 *表说明采用黑体* }
-% \vspace {-2.5mm}
-% \begin{center}
-% \begin{tabular}{ll}
-% \toprule
-% *示例表格*&*第1行为表头,表头要有内容* \\
-% \hline
-% &
-%  \\
-% &
-%  \\
-% &
-%  \\
-% &
-%  \\
-% \bottomrule
-% \end{tabular}
-% \label{tab1}
-% \end{center}
-% \end{table}
-
-% \heiti 过程X. \quad 过程名称
-
-% {\zihao{5-}*《计算机学报》的方法过程描述字体为小5号宋体，IF、THEN等伪代码关键词全部用大写字母，变量和函数名称用斜体*}
+\vspace{10mm}
 
 
-% \heiti 算法\textbf{Y} .\quad 算法名称.
-% \zihao{5-}{
+\section{总结与展望}
 
-% \noindent 输入：{\ldots} {\ldots}
+在模糊测试领域，生成式和变异式测试用例生成方法正朝着与人工智能技术深度融合的方向发展。深度学习模型，尤其是大型预训练模型，以其卓越的代码理解和生成能力，为模糊测试技术的创新开辟了新路径。首先，这些模型通过学习海量程序代码，能够深入理解程序的语义结构、控制流程和数据依赖关系，从而帮助生成式测试方法突破传统基于语法规则的局限。它们能够自动推断程序的输入约束和边界条件，生成符合程序预期的高质量测试用例，减少对人工定义语法规则的依赖。
 
-% \noindent 输出：{\ldots} {\ldots}
+同时，深度学习模型的知识迁移能力使得在不同程序间共享和复用测试经验成为可能，这对于提高测试效率具有重要意义。对于变异式测试方法，深度学习模型可以通过分析历史测试数据和程序执行轨迹，学习到更智能的变异策略。它们能够预测哪些变异操作更可能产生有价值的测试用例，优化变异过程中的决策，尤其是在处理复杂的数据结构和协议时。
 
-% *《计算机学报》的算法描述字体为小5号宋体, IF、THEN等伪代码关键词全部用大写字母，变量和函数名称用斜体*}
+随着深度学习技术的不断进步，未来的模糊测试将更加智能化和自动化。模型可以自适应不同类型的程序和输入格式，动态调整测试策略。在处理具有复杂约束的程序时，模型可以结合符号执行和动态分析技术，更精确地解决路径约束问题。此外，大模型强大的多模态理解能力也使得它可以处理更多样化的输入类型，如图形界面、网络协议等。
 
-\clearpage\clearpage
+然而，在应用深度学习技术时也需要注意几个关键问题：首先是模型的可解释性，需要确保测试过程的可控性和结果的可理解性；其次是计算资源的平衡，需要在模型的复杂度和实用性之间找到适当的平衡点；最后是测试的完整性和可靠性，需要确保基于模型的测试方法能够维持较高的代码覆盖率和漏洞发现能力。
 
+未来，模糊测试技术可能会朝着"混合智能"的方向发展，将传统的测试技术与新兴的人工智能方法有机结合。这种结合不仅包括深度学习模型的应用，还可能涉及强化学习、知识图谱等技术，形成更完善的测试生态系统。通过持续学习和优化，这样的系统能够不断提升测试效率和准确性，为软件安全性保障提供更有力的支持。同时，随着大模型技术的发展，模糊测试也可能实现更高层次的智能化，如自动理解软件需求、自动生成测试策略、自动修复发现的漏洞等，从而推动软件测试领域向更高水平发展。
 
-% TODO: 参考文献、致谢、附录、作者简介
+\begin{strip}
+\end{strip}
+
+% 参考文献、致谢、附录、作者简介
 \vspace {3mm}
 \zihao{5}{
-\noindent \heiti 致\quad 谢 \quad  \kaishu   *致谢内容.* 致谢 }
+\noindent \heiti 致\quad 谢 \quad  \kaishu}
+感谢软件学院的房春荣老师和助教们，为本文提供了很多帮助，并为我们的综述写作提供了入门级的指导。
+
+感谢YZW，在我们紧张的时候带来了很多欢乐。
 
 \vspace {5mm}
 \centerline
@@ -422,6 +392,10 @@ Symposium (NDSS’19). 1–15.
   \bibitem{Chang}
   Chang, Z. (2019, April 29). AFL 及其相关拓展项目总结. 
   \url{https://zanderchang.github.io/2019/04/29/AFL%E5%8F%8A%E5%85%B6%E7%9B%B8%E5%85%B3%E6%8B%93%E5%B1%95%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/}
+  \bibitem{Miller}
+  Miller, B. P., Fredriksen, L., and So, B. (1990). An empirical study of the reliability of UNIX utilities. Communications of the ACM, 33(12), 32-44. https://doi.org/10.1145/96267.9627
+  \bibitem{Sutton}
+  Sutton, M., Greene, A., and Amini, P. (2007). Fuzzing: Brute Force Vulnerability Discovery. Addison-Wesley Professional. ISBN:978-0-321-44611-4
   \bibitem{TaintScope}
   Wang, T., Wei, T., Gu, G., and Zou, W. (2010). TaintScope: A Checksum-Aware Directed Fuzzing Tool for Automatic Software Vulnerability Detection. In Proceedings of the 2010 IEEE Symposium on Security and Privacy (SP'10). https://doi.org/10.1109/SP.2010.37
   \bibitem{GREYONE}
@@ -439,9 +413,33 @@ Symposium (NDSS’19). 1–15.
   Böhme, M., Pham, V.-T., Nguyen, M.-D., and Roychoudhury, A. (2017). Directed Greybox Fuzzing. In Proceedings of the 2017 ACM SIGSAC Conference on Computer and Communications Security (CCS ’17). Dallas, TX, USA: Association for Computing Machinery. https://doi.org/10.1145/3133956.3134020
   \bibitem{Godefroid}
   Godefroid, P., Peleg, H., and Singh, R. (2017). Learn$\&$Fuzz: Machine Learning for Input Fuzzing. In Proceedings of the 32nd IEEE/ACM International Conference on Automated Software Engineering (ASE 2017). Urbana-Champaign, IL, USA: IEEE. 978-1-5386-2684-9/17
+  \bibitem{differential}
+  Liu, J., Huang, Y., Wang, Z., Ma, L., Fang, C., Gu, M., Zhang, X., and Chen, Z. (2024). Generation-based differential fuzzing for deep learning libraries. *ACM Transactions on Software Engineering and Methodology, 33*(2), Article 50. https://doi.org/10.1145/3628159 
+  \bibitem{zest}
+  Padhye, R., Lemieux, C., Sen, K., Papadakis, M., and Le Traon, Y. (2019). Semantic fuzzing with Zest. *Proceedings of the 28th ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA '19)*, 329-340. https://doi.org/10.1145/3293882.3330576
+  \bibitem{DeepFuzz}
+  Liu, X., Li, X., Prajapati, R., and Wu, D. (2019). DeepFuzz: Automatic generation of syntax valid C programs for fuzz testing. In *Proceedings of the Thirty-Third AAAI Conference on Artificial Intelligence / Thirty-First Innovative Applications of Artificial Intelligence Conference / Ninth AAAI Symposium on Educational Advances in Artificial Intelligence* (pp. 1044-1051). AAAI.
+  \bibitem{FuzzGAN}
+  Han, G., Li, Z., Tang, P., Hu, C., and Guo, S. (2022). FuzzGAN: A generation-based fuzzing framework for testing deep neural networks. In *Proceedings of the 2022 IEEE 24th International Conference on High Performance Computing $\&$ Communications; 8th International Conference on Data Science $\&$ Systems; 20th International Conference on Smart City; 8th International Conference on Dependability in Sensor, Cloud $\&$ Big Data Systems $\&$ Applications* (pp. 1601-1608). IEEE. https://doi.org/10.1109/HPCC-DSS-SmartCity-DependSys57074.2022.00244
+  \bibitem{CAGFuzz}
+  Zhang, P., Ren, B., Dong, H., and Dai, Q. (2022). CAGFuzz: Coverage-guided adversarial generative fuzzing testing for image-based deep learning systems. *IEEE Transactions on Software Engineering, 48*(11), 4630-4646. https://doi.org/10.1109/TSE.2021.3124006
+  \bibitem{atigmt}
+  Liu, P., Zhang, X., Pistoia, M., Zheng, Y., Marques, M., and Zeng, L. (2017). Automatic text input generation for mobile testing. In *Proceedings of the 39th International Conference on Software Engineering (ICSE)* (pp. 643-653). IEEE. https://doi.org/10.1109/ICSE.2017.65
+  \bibitem{Beyene}
+  Beyene, M., and Andrews, J. H. (2012). Generating string test data for code coverage. In *Proceedings of the 2012 IEEE Fifth International Conference on Software Testing, Verification and Validation* (pp. 395-404). IEEE. https://doi.org/10.1109/ICST.2012.107
+  \bibitem{Evo}
+  Georgescu, C., Olsthoorn, M., Derakhshanfar, P., Akhin, M., and Panichella, A. (2024). Evolutionary generative fuzzing for differential testing of the Kotlin compiler. In M. D'Amorim (Ed.), *Companion Proceedings of the 32nd ACM International Conference on the Foundations of Software Engineering, FSE Companion 2024* (pp. 197-207). ACM. https://doi.org/10.1145/3663529.3663864
+  \bibitem{Skyfire}
+  Wang, J. J., Chen, B. H., Wei, L., and Liu, Y. (2017). Skyfire: Data-driven seed generation for fuzzing. In *Proceedings of the 38th IEEE Symposium on Security and Privacy (SP)* (pp. 579-594). IEEE. https://doi.org/10.1109/SP.2017.23
+  \bibitem{Dewey}
+  Dewey, K., Roesch, J., and Hardekopf, B. (2015). Fuzzing the Rust typechecker using CLP (T). *Proceedings of the 30th IEEE/ACM International Conference on Automated Software Engineering (ASE)*, 482-493. https://doi.org/10.1109/ASE.2015.65
+
 \end{thebibliography}
 
-\vspace{10mm}
+\clearpage\clearpage
+
+\begin{strip}
+\end{strip}
 
 \begin{biography}[pbs.jpg]
 \noindent
@@ -449,9 +447,9 @@ Symposium (NDSS’19). 1–15.
 \end{biography}
 
 \vspace{10mm}
-\begin{biography}[yourphotofilename.jpg]
+\begin{biography}[xjy.jpg]
 \noindent
-\textbf{XING Jun-Yang} Undergraduate Student. His research interests include \textbf{machine learning, fuzzing, and software security}.
+\textbf{XING Jun-Yang} Undergraduate Student. His research interests include \textbf{machine learning, GUI tests, and LLMs}.
 \end{biography}
 \vspace{10mm}
 
@@ -465,29 +463,6 @@ Symposium (NDSS’19). 1–15.
 \noindent
 \textbf{XIAO Jia-Sheng} Undergraduate Student. His research interests include \textbf{machine learning, fuzzing, and software security}.
 \end{biography}
-
-\vspace{20mm}
-
-\zihao{5}
-\noindent \textbf{Background}
-
-\zihao{5-}{
-\setlength\parindent{2em}
-*论文背景介绍为\textbf{英文}，字体为小5号Times New Roman体*
-
-论文后面为400单词左右的英文背景介绍。介绍的内容包括：
-
-本文研究的问题属于哪一个领域的什么问题。该类问题目前国际上解决到什么程度。
-
-本文将问题解决到什么程度。
-
-课题所属的项目。
-
-项目的意义。
-
-本研究群体以往在这个方向上的研究成果。
-
-本文的成果是解决大课题中的哪一部分，如果涉及863$\backslash $973以及其项目、基金、研究计划，注意这些项目的英文名称应书写正确。}
  
 \end{document}
 
