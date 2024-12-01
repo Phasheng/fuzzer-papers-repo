@@ -174,9 +174,9 @@ key word; key word; key word* *字体为5号Times new Roman * Key words }\par}
 
 为了减少软件漏洞带来的损害,各类软件测试技术蓬勃发展，其中模糊测试已成为当前最流行的方法之一。模糊测试是一种通过随机或半随机的方式生成测试用例，将其输入到目标系统后监听异常结果来发现安全漏洞的安全检测技术。在模糊测试的流程中，输入生成的主要作用是通过不同策略生成能够引发程序异常行为、潜在漏洞或者新代码路径的输入数据。这类样例也被称为“有趣”的样例。确保样例的“有趣”才能保证在后续的测试运行时高效，覆盖率高。从而提高程序的安全性与鲁棒性。
 
-模糊测试输入生成通常遵循以下流程：首先，选择模糊测试目标。可以是源代码、二进制代码，应用程序等。然后必须了解目标接受的输入格式和协议，确保输入数据服务目标预期。生成测试用例时，可以参考之前经过验证的有趣的用例集，或者直接生成新用例。用例的生成策略主要有随机生成和基于语法生成。当测试执行完成之后，对于触发异常的用例，可以保存以供重用或突变后产生新的测试样例。 
+模糊测试输入生成通常遵循以下流程：首先，选择模糊测试目标。可以是源代码、二进制代码，应用程序等。然后必须了解目标接受的输入格式和协议，确保输入数据服务目标预期。生成测试用例时，可以参考之前经过验证的有趣的用例集，或者直接生成新用例。用例的生成策略主要有随机生成和基于语法生成。当测试执行完成之后，对于触发异常的用例，可以保存以供重用或变异后产生新的测试样例。 
 
-基于突变的随机生成测试用例\cite{LibFuzzer, Chenyang, Shuitao}是一种常见的技术，通过注入随机且不可预测的输入来检测应用程序中的漏洞和缺陷。这种方法有助于生成在代码演化或测试阶段尚未探索的新测试用例。然而，随机生成的局限性在于其变异能力的边界限制 - 它只能在现有种子语料库的范围内生成测试用例。如果种子语料库中不包含特定的输入模式或数据结构，就无法生成探索这些特定条件下应用程序行为的测试用例。然而，基于变异的技术可以在更高的抽象级别上操纵输入数据。它可以通过转换输入数据结构（添加/删除）而不是随机更改单个字节来生成新的测试用例。
+基于变异的随机生成测试用例\cite{LibFuzzer, Chenyang, Shuitao}是一种常见的技术，通过注入随机且不可预测的输入来检测应用程序中的漏洞和缺陷。这种方法有助于生成在代码演化或测试阶段尚未探索的新测试用例。然而，随机生成的局限性在于其变异能力的边界限制 - 它只能在现有种子语料库的范围内生成测试用例。如果种子语料库中不包含特定的输入模式或数据结构，就无法生成探索这些特定条件下应用程序行为的测试用例。然而，基于变异的技术可以在更高的抽象级别上操纵输入数据。它可以通过转换输入数据结构（添加/删除）而不是随机更改单个字节来生成新的测试用例。
 
 一个扩展的想法是基于语法生成测试用例\cite{Cornelius, Martin}来为基于生成和变异的模糊测试其提供更好的能力。这种方法利用目标程序接受的输入的形式化语法规范来指导测试用例的生成。通过遵循预定义的语法规则，可以生成在语法上有效的输入，提高测试的效率。与随机生成相比，基于语法的方法能够更好地处理具有复杂输入格式的程序，如编译器、解释器等。此外，将代码片段内联到语法结构中有助于探索代码中的复杂路径，并通过做出使用上下文无关语法无法执行的精确决策来执行复杂操作。但是，它需要对输入语言语法有深入的了解，并且可能需要为复杂或专有的输入语言开发自定义语法。然而，生成的测试用例可能并不总是包含意外或恶意内容，需要进一步变异或生成以增加发现漏洞和错误的可能性。
 \vspace {10mm}
@@ -185,7 +185,23 @@ key word; key word; key word* *字体为5号Times new Roman * Key words }\par}
 
 \subsection{AFL的经典变异策略及其变种}
 
+AFL（American Fuzzy Lop）作为一个里程碑式的模糊测试工具，其变异策略具有代表性。AFL采用了一种混合变异策略，包括确定性变异和随机变异两种方式。确定性变异（Deterministic Strategy）的含义是指基于一组预定义的规则或模式进行的变异操作，这些操作是可以预测的，这在AFL中主要体现在以下几个方面，首先是位翻转（Bit Flip），即将输入中的某一位取反。其次是字节翻转（Byte Flip）即将输入中的某一个字节取反；还包括算术变异，即对输入中的整数进行加减操作以及按序插入已知的特殊整数值。而非确定性变异（Non-Deterministic Strategy）则是指基于随机性的变异操作，这些操作是不可预测的，堆叠式位翻转(Stacked bit flips)，插入操作(Insertions)，删除操作(Deletions)，算术运算(Arithmetics)，测试用例拼接(Test case splicing)等都属于这方面。
 
+AFL同时基于进化算法进行输入队列管理，采用类似自然选择的机制，保留那些能触发新路径的测试用例，通过能量分配机制，优先处理更有潜力的测试用例，定期进行队列精简，去除冗余用例\cite{Zhang}。然而，AFL的变异策略也存在一些局限性，而针对AFL的哈希冲突问题，CollAFL提供了更准确的路径覆盖信息\cite{Collafl}，提出了三种变异引导策略：
+
+\begin{itemize}
+  \item 未触及邻居分支引导：关注当前执行路径的直接可达区域
+  \item 未触及邻居后代引导：扩展搜索范围到可传递达到的程序区域
+  \item 内存访问引导：特别关注可能导致内存问题的程序位置
+\end{itemize}
+
+这样一个完整的变异决策体系，不仅提高了变异的精确性，还保持了低开销的插桩。除此之外，对于AFL主要的优化方向的例子如下：
+
+\begin{itemize}
+  \item 多种优化方式的集成：在AFL的基础上集成其他先进fuzzer的优化方式，如AFL++\cite{Fioraldi}
+  \item 改进变异策略：例如FairFuzz针对难抵达的分支进行优化，AFLGo专注于获取代码的某些部分的覆盖，PerfFuzz用于查找可能显著减慢程序速度的测试用例，Pythia预测找到新路径的难度，Angora使用新的策略进行变异以增加覆盖范围，Neuzz利用神经网络进行模糊测试\cite{Chang}
+  \item 基于QEMU和Unicorn的改进：对于基于QEMU的改进，有TriforceAFL和afl-unicorn等项目，它们允许在QEMU模式下对整个操作系统进行模糊测试\cite{Chang}。
+\end{itemize}
 
 \section{高级变异技术}
 
@@ -200,7 +216,7 @@ GreyOne\cite{GREYONE}是一种先进的数据流敏感模糊测试技术，其�
 
 T-Fuzz\cite{T-Fuzz}是一种基于程序变换的模糊测试方法，它通过移除目标程序中的输入检查来提高代码覆盖率。T-Fuzz利用覆盖引导的模糊测试生成输入，并在模糊测试无法触发新代码路径时，使用轻量级的动态追踪技术检测输入检查，然后将这些检查从目标程序中移除。这种方法允许之前被检查保护的代码被触发，从而有可能发现潜在的错误。T-Fuzz面临的挑战包括移除检查可能导致过度近似和误报，以及在变换程序中触发的崩溃输入可能不会在原始程序中触发错误。为了解决这些问题，T-Fuzz采用了基于符号执行的方法作为辅助的后处理步骤，以过滤掉误报并在原始程序中复现真正的错误。通过变换程序和输入变异，T-Fuzz能够覆盖更多的代码，并发现比现有技术更多的真实错误。
 
-Angora是一种基于变异的模糊测试工具，它通过引入一系列关键技术来提高路径覆盖率，有效解决了路径约束问题。Angora的主要目标是在不使用符号执行的情况下，通过解决路径约束来增加分支覆盖。它采用了可扩展的字节级污点跟踪技术，这种技术通过跟踪输入字节如何流入程序中的每个路径约束，使得Angora能够只突变那些影响路径约束的字节，而不是整个输入，从而大幅减少了探索空间。此外，Angora还采用了基于梯度下降的搜索算法，这种算法在机器学习中非常流行，它避免了昂贵的符号执行，并且能够高效地解决路径约束。Angora还进行了类型和形状推断，这使得梯度下降算法能够更有效地搜索，因为它能够识别输入中哪些字节被集体用作单个值，并推断出这些值的类型。最后，Angora还探索了输入长度，因为某些程序状态只有在输入长度超过某个阈值时才会被探索，而Angora能够检测到这一点并适当增加输入长度。
+Angora\cite{angora}是一种基于变异的模糊测试工具，它通过引入一系列关键技术来提高路径覆盖率，有效解决了路径约束问题。Angora的主要目标是在不使用符号执行的情况下，通过解决路径约束来增加分支覆盖。它采用了可扩展的字节级污点跟踪技术，这种技术通过跟踪输入字节如何流入程序中的每个路径约束，使得Angora能够只变异那些影响路径约束的字节，而不是整个输入，从而大幅减少了探索空间。此外，Angora还采用了基于梯度下降的搜索算法，这种算法在机器学习中非常流行，它避免了昂贵的符号执行，并且能够高效地解决路径约束。Angora还进行了类型和形状推断，这使得梯度下降算法能够更有效地搜索，因为它能够识别输入中哪些字节被集体用作单个值，并推断出这些值的类型。最后，Angora还探索了输入长度，因为某些程序状态只有在输入长度超过某个阈值时才会被探索，而Angora能够检测到这一点并适当增加输入长度。
 \vspace {10mm}
 
 \subsection{基于输入与程序状态对应关系的变异}
@@ -397,22 +413,35 @@ Data flow sensitive fuzzing. In Proceedings of the 29th USENIX Security Symposiu
 Symposium (NDSS’19). 1–15.
   \bibitem{Martin}
   Martin Eberlein, Yannic Noller, Thomas Vogel, and Lars Grunske. 2020. Evolutionary grammar-based fuzzing. In Proceedings of the 12th International Symposium of Search-Based Software Engineering (SSBSE’20). Springer-Verlag, 105–120.
+  \bibitem{Zhang}
+  Zhang, S. (n.d.). Technical "whitepaper" for afl-fuzz. Retrieved from http://lcamtuf.coredump.cx/afl/
+  \bibitem{Collafl}
+  Gan, S., Zhang, C., Qin, X., Tu, X., Li, K., Pei, Z., and Chen, Z. (2018, May). Collafl: Path sensitive fuzzing. In 2018 IEEE Symposium on Security and Privacy (SP) (pp. 679-696). IEEE.
+  \bibitem{Fioraldi}
+  Fioraldi, A., Maier, D., Eißfeldt, H., and Heuse, M. (2020). {AFL++}: Combining incremental steps of fuzzing research. In 14th USENIX Workshop on Offensive Technologies (WOOT 20).
+  \bibitem{Chang}
+  Chang, Z. (2019, April 29). AFL 及其相关拓展项目总结. 
+  \url{https://zanderchang.github.io/2019/04/29/AFL%E5%8F%8A%E5%85%B6%E7%9B%B8%E5%85%B3%E6%8B%93%E5%B1%95%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/}
+  \bibitem{TaintScope}
+  Wang, T., Wei, T., Gu, G., and Zou, W. (2010). TaintScope: A Checksum-Aware Directed Fuzzing Tool for Automatic Software Vulnerability Detection. In Proceedings of the 2010 IEEE Symposium on Security and Privacy (SP'10). https://doi.org/10.1109/SP.2010.37
+  \bibitem{GREYONE}
+  Gan, S., Zhang, C., Qin, X., Wu, D., Zhao, B., Qin, X., and Chen, Z. (2020). GREYONE: Data Flow Sensitive Fuzzing. In Proceedings of the 29th USENIX Security Symposium (12-14 August 2020). USENIX Association. 
+  \url{https://www.usenix.org/conference/usenixsecurity20/presentation/gan}
+  \bibitem{T-Fuzz}
+  Peng, H., Shoshitaishvili, Y., and Payer, M. (2018). T-Fuzz: Fuzzing by Program Transformation. In 2018 IEEE Symposium on Security and Privacy (SP'18). https://doi.org/10.1109/SP.2018.00056
+  \bibitem{angora}
+  Chen, P., and Chen, H. (2018). Angora: Efficient Fuzzing by Principled Search. 2018 IEEE Symposium on Security and Privacy, 711-714. DOI: 10.1109/SP.2018.00046x`'
+  \bibitem{redqueen}
+  Aschermann, C., Schumilo, S., Blazytko, T., Gawlik, R., and Holz, T. (2019). REDQUEEN: Fuzzing with Input-to-State Correspondence. In Network and Distributed System Security (NDSS) Symposium (24-27 February 2019). San Diego, CA, USA. https://dx.doi.org/10.14722/ndss.2019.23371
+  \bibitem{PATA}
+  Liang, J., Wang, M., Zhou, C., Wu, Z., Jiang, Y., Liu, J., Liu, Z., and Sun, J. (2022). PATA: Fuzzing with Path-Aware Taint Analysis. In 2022 IEEE Symposium on Security and Privacy (SP)
   \bibitem{Böhme}
   Böhme, M., Pham, V.-T., Nguyen, M.-D., and Roychoudhury, A. (2017). Directed Greybox Fuzzing. In Proceedings of the 2017 ACM SIGSAC Conference on Computer and Communications Security (CCS ’17). Dallas, TX, USA: Association for Computing Machinery. https://doi.org/10.1145/3133956.3134020
   \bibitem{Godefroid}
   Godefroid, P., Peleg, H., and Singh, R. (2017). Learn$\&$Fuzz: Machine Learning for Input Fuzzing. In Proceedings of the 32nd IEEE/ACM International Conference on Automated Software Engineering (ASE 2017). Urbana-Champaign, IL, USA: IEEE. 978-1-5386-2684-9/17
-  \bibitem{redqueen}
-  Aschermann, C., Schumilo, S., Blazytko, T., Gawlik, R., and Holz, T. (2019). REDQUEEN: Fuzzing with Input-to-State Correspondence. In Network and Distributed System Security (NDSS) Symposium (24-27 February 2019). San Diego, CA, USA. https://dx.doi.org/10.14722/ndss.2019.23371
-  \bibitem{TaintScope}
-  Wang, T., Wei, T., Gu, G., and Zou, W. (2010). TaintScope: A Checksum-Aware Directed Fuzzing Tool for Automatic Software Vulnerability Detection. In Proceedings of the 2010 IEEE Symposium on Security and Privacy (SP'10). https://doi.org/10.1109/SP.2010.37
-  \bibitem{T-Fuzz}
-  Peng, H., Shoshitaishvili, Y., and Payer, M. (2018). T-Fuzz: Fuzzing by Program Transformation. In 2018 IEEE Symposium on Security and Privacy (SP'18). https://doi.org/10.1109/SP.2018.00056
-  \bibitem{GREYONE}
-  Gan, S., Zhang, C., Qin, X., Wu, D., Zhao, B., Qin, X., and Chen, Z. (2020). GREYONE: Data Flow Sensitive Fuzzing. In Proceedings of the 29th USENIX Security Symposium (12-14 August 2020). USENIX Association. 
-  \url{https://www.usenix.org/conference/usenixsecurity20/presentation/gan}
-  \bibitem{PATA}
-  Liang, J., Wang, M., Zhou, C., Wu, Z., Jiang, Y., Liu, J., Liu, Z., and Sun, J. (2022). PATA: Fuzzing with Path-Aware Taint Analysis. In 2022 IEEE Symposium on Security and Privacy (SP)
 \end{thebibliography}
+
+\vspace{10mm}
 
 \begin{biography}[pbs.jpg]
 \noindent
@@ -437,10 +466,7 @@ Symposium (NDSS’19). 1–15.
 \textbf{XIAO Jia-Sheng} Undergraduate Student. His research interests include \textbf{machine learning, fuzzing, and software security}.
 \end{biography}
 
-\vspace{10mm}
-
-\begin{strip}
-\end{strip}
+\vspace{20mm}
 
 \zihao{5}
 \noindent \textbf{Background}
